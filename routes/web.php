@@ -14,8 +14,12 @@ use App\Http\Controllers\CrudController;
 |
 */
 
-Route::get('/', [CrudController::class, 'index']);
-Route::post('/addStudentRoute', [CrudController::class, 'create'])->name('create');
+Route::get('/', [CrudController::class, 'index'])->name('index');
+Route::get('/addStudentRoute', [CrudController::class, 'create'])->name('create');
+Route::get('/edit/{id}', [CrudController::class, 'edit'])->name('edit');
+Route::post('/storeStudentRoute', [CrudController::class, 'store'])->name('store');
+Route::put('/update/{id}', [CrudController::class, 'update'])->name('update');
+
 
 
 Auth::routes();

@@ -16,8 +16,22 @@ class CrudController extends Controller
     }
 
     public function create(Request $request){
-        Log::info($request);
+        
+        return view('layouts.add');
+    }
 
+    public function store(Request $request){
+       
+
+        // $validated = $request->validate([
+        //     'name' => 'required|max:255',
+        //     'email' => 'required|max:255',
+        //     'address' => 'required|max:255',
+        //     'mobile' => 'required|max:10',
+        // ]);
+    
+        // Log::info($validated);
+        
         $newStud = new contact;
         $newStud->name = $request->studName;
         $newStud->email = $request->studEmail;
@@ -25,9 +39,28 @@ class CrudController extends Controller
         $newStud->mobile = $request->studPhone;
         $newStud->save();
 
-        return view('layouts.add');
+        return redirect('/')->with('message' ,'Created  Succefully');
+
     }
 
+    public function edit($id){
+
+        $newStud = contact::find($id); 
+        return view('layouts.edit',compact('newStud'));
+
+    }
+
+    public function update(Request $request ,$id){
+
+        $newStud = contact::find($id);
+        $newStud->name = $request->studName;
+        $newStud->email = $request->studEmail;
+        $newStud->address = $request->studAddress;
+        $newStud->mobile = $request->studPhone;
+        $newStud->update();
+
+        return redirect('/')->with('alert' ,'Updated Succefully');
+    }
 
 
 }
