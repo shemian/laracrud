@@ -63,4 +63,15 @@ class CrudController extends Controller
     }
 
 
+    public function destroy($id){
+        $newStud = contact::find($id);
+
+        if($newStud){
+            $newStud->delete();
+            return redirect('/');
+
+        }
+    }
+
+
 }

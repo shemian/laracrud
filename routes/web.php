@@ -19,6 +19,7 @@ Route::get('/addStudentRoute', [CrudController::class, 'create'])->name('create'
 Route::get('/edit/{id}', [CrudController::class, 'edit'])->name('edit');
 Route::post('/storeStudentRoute', [CrudController::class, 'store'])->name('store');
 Route::put('/update/{id}', [CrudController::class, 'update'])->name('update');
+Route::get('/delete/{id}', [CrudController::class, 'destroy'])->name('delete');
 
 
 
